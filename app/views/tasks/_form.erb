@@ -1,0 +1,10 @@
+<%= form_for @task do |f| %>
+	<%= render partial: 'layouts/error_exp' %>
+	Задача	 <%= f.text_field :subject %>
+	<br>
+	Описание <%= f.text_field :details %>
+	<br>
+	<%= f.submit 'Сохранить задачу' %>
+	<br>
+	<%= f.date_field :date %>
+<% end %>

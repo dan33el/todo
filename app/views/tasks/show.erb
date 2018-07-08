@@ -1,0 +1,11 @@
+<%=	@task.subject %>
+<br>
+<%=	@task.details %>
+<%=	@task.completed %>
+<%=	@task.date %>
+<hr>	
+<%= link_to 'Редактировать задачу', edit_task_url(@task.id) %>
+<br>
+<%= link_to 'Удалить задачу', task_url(@task.id), method: :delete %>
+<hr>
+<%= link_to 'Все задачи', tasks_url %>
