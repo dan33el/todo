@@ -1,11 +1,31 @@
-<%=	@task.subject %>
-<br>
-<%=	@task.details %>
-<%=	@task.completed %>
-<%=	@task.date %>
-<hr>	
-<%= link_to 'Редактировать задачу', edit_task_url(@task.id) %>
-<br>
-<%= link_to 'Удалить задачу', task_url(@task.id), method: :delete %>
-<hr>
-<%= link_to 'Все задачи', tasks_url %>
+<div class="row">
+	<div class= "col-md-4">
+		<div class="panel panel-default">
+			<div class="panel-heading"><%=	@task.subject %>
+					<%= link_to '', task_url, class: "glyphicon glyphicon-remove", method: :delete %></div>
+
+		<div class="panel-body"><%=	@task.details %></div>
+
+		<div class="panel-footer">
+			<div class="btn-group" role="group">
+			<%= link_to 'Редактировать задачу', edit_task_url(@task.id), class: "btn btn-primary" %>
+				<% if @task.completed %>
+					<%=	button_to 'Задача сделана', task_completed_url(@task), class: "btn btn-success" %>
+				<% else %>
+					<%=	button_to 'Выполнить!', task_completed_url(@task), class: "btn btn-warning"  %>
+				<% end %>	
+
+			<%=	@task.date %>	
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+
+<div class="row">
+	<div class= "col-md-4">
+	<%= link_to 'Все задачи', tasks_url, class: "btn btn-default" %>
+	</div>
+</div>	
+
+
