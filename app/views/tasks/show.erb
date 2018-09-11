@@ -1,3 +1,7 @@
+<% content_for(:first_navbar_link) do %>
+	<%= link_to "Все Задачи", tasks_url %>
+<% end %>
+
 <div class="row">
 	<div class= "col-md-4">
 		<div class="panel panel-default">
@@ -21,11 +25,5 @@
 	</div>
 </div>
 </div>
-
-<div class="row">
-	<div class= "col-md-4">
-	<%= link_to 'Все задачи', tasks_url, class: "btn btn-default" %>
-	</div>
-</div>	
 
 

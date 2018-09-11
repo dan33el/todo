@@ -15,7 +15,7 @@ class TasksController < ApplicationController
   def create
     @task = Task.new(params[:task].permit!)
     if @task.save
-      # flash[:notice] = 'Задача успешно создана'
+      flash[:notice] = 'Задача успешно создана'
       redirect_to tasks_path
     else
       render :new
@@ -28,7 +28,7 @@ class TasksController < ApplicationController
 
   def destroy
     Task.find(params[:id]).destroy
-
+    flash[:alert] = 'Задача удалена'
     redirect_to tasks_url
   end
 
@@ -39,6 +39,7 @@ class TasksController < ApplicationController
   def update
     @task = Task.find(params[:id])
     if @task.update_attributes(params[:task].permit!)
+      flash[:notice] = 'Задача успешно обновлена'
       redirect_to task_url(params[:id])
     else
       render :edit

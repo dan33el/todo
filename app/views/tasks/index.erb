@@ -1,18 +1,29 @@
+<% content_for(:first_navbar_link) do %>
+	<%= link_to "Новая Задача", new_task_url %>
+<% end %>
+<% content_for(:second_navbar_link) do %>
+	<%= link_to "Все Задачи", tasks_url %>
+<% end %>
+<% content_for(:third_navbar_link) do %>
+	<%= render partial: "search_date_form" %>
+<% end %>
 
-<div class="row">
 
-	<div class="col-md-3   col-md-push-1">
-		<%= render partial: "search_date_form" %>
-	</div>
+<% content_for(:fourth_navbar_link) do %>
+	<li class="dropdown">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Задачи за: <span class="caret"></span></a>
+    <ul class="dropdown-menu">
+      <li><%= link_to 'Вчера', tasks_path(search: { date: (Date.current - 1.day).to_s })%></li>
+      <li><%= link_to 'Cегодня', tasks_path(search: { date: Date.current.to_s })%></li>
+      <li><%= link_to 'Завтра', tasks_path(search: { date: (Date.current + 1.day).to_s })%></li>
+    </ul>
+  </li>
+<% end %>
 
-	<div class="col-md-3   col-md-push-2">
-		<%= link_to "Новая Задача", new_task_url, class: "btn btn-default" %>
-	</div>
 
-	<div class="col-md-2 col-md-push-2">
-		<div class="form-group"><%= link_to 'Посмотреть все задачи', tasks_url, class: "btn btn-default"  %></div>
-	</div>
-</div>
+
+ 
+
 <% @records.each_slice(3) do |row| %>	
 	<div class="row">
 		<% row.map do |task| %>
